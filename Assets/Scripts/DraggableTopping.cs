@@ -70,4 +70,11 @@ public class DraggableTopping : MonoBehaviour,
             rectTransform.anchoredPosition = startPos;
         }
     }
+
+    void OnEnable()
+{
+    rectTransform.anchoredPosition = startPos;
+    droppedSuccessfully = false;
+}
+
 }

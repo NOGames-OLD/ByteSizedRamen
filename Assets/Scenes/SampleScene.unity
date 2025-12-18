@@ -6773,6 +6773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b82b63eaac02e1645a397a6ae9c74822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prepPanel: {fileID: 1887660514}
   frontScreen: {fileID: 342255173}
   cookTop: {fileID: 782306495}
   cookers:

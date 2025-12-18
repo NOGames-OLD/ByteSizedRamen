@@ -3,7 +3,7 @@ using UnityEngine;
 public class ScreenManager : MonoBehaviour
 {
 
-
+    public GameObject prepPanel;
     public GameObject frontScreen;
     public GameObject cookTop;
     public Cooker[] cookers;
@@ -54,6 +54,11 @@ public class ScreenManager : MonoBehaviour
         }
         prepScreen.SetActive(true);
         frontScreen.SetActive(false);
+        //so toppings are reenabled 
+        foreach (Transform child in prepPanel.transform)
+    {
+        child.gameObject.SetActive(true);
+    }
         FindObjectOfType<AudioManager>().Play("ScreenChange");
     }
 }
