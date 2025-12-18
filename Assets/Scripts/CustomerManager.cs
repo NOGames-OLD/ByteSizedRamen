@@ -138,7 +138,7 @@ public class CustomerManager : MonoBehaviour
 private void SetupRandomRecipeForOrder(Order order)
 {
     // Random sauce 
-    SauceType[] sauces = { SauceType.Soy, SauceType.Spice };
+    SauceType[] sauces = { SauceType.Soy, SauceType.Miso, SauceType.Pork, SauceType.Salt };
     int sauceIndex = UnityEngine.Random.Range(0, sauces.Length);
     order.requestedSauce = sauces[sauceIndex];
 
@@ -146,8 +146,10 @@ private void SetupRandomRecipeForOrder(Order order)
     ToppingFlags[] toppingChoices =
     {
         ToppingFlags.Egg,
-        ToppingFlags.Shrimp,
+        ToppingFlags.Bacon,
         ToppingFlags.Seaweed,
+        ToppingFlags.Ham,
+        ToppingFlags.Tempura,
     };
 
     order.requestedToppings = ToppingFlags.None;

@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PrepStation : MonoBehaviour
 {
+    public Transform toppingsOverlay;
+    public GameObject toppingVisualPrefab;
+
     public Prep prep;                     // existing Prep script
     public CustomerManager customerManager;
 
@@ -21,6 +24,7 @@ public class PrepStation : MonoBehaviour
         if (contents == null) return;
 
         contents.SetSauce((SauceType)sauceIndex);
+        FindObjectOfType<AudioManager>().Play("CondimentSqueeze");
 
     }
 
@@ -35,13 +39,16 @@ public class PrepStation : MonoBehaviour
         switch (toppingIndex)
         {
             case 0: chosen = ToppingFlags.Egg; break;
-            case 1: chosen = ToppingFlags.Shrimp; break;
+            case 1: chosen = ToppingFlags.Ham; break;
             case 2: chosen = ToppingFlags.Seaweed; break;
+            case 3: chosen = ToppingFlags.Bacon; break;
+            case 4: chosen = ToppingFlags.Tempura; break;
         }
 
         if (chosen != ToppingFlags.None)
         {
             contents.ToggleTopping(chosen);
         }
+        FindObjectOfType<AudioManager>().Play("ToppingAdd");
     }
 }
