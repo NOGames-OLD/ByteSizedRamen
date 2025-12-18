@@ -1,0 +1,95 @@
+<linker>
+	<assembly fullname="Assembly-CSharp" ignoreIfMissing="1">
+		<type fullname="Cooker">
+			<method name="AddNoodles"/>
+			<method name="AddNoodles"/>
+			<method name="AddNoodles"/>
+			<method name="AddNoodles"/>
+			<method name="SendNoodlesToPrep"/>
+			<method name="SendNoodlesToPrep"/>
+			<method name="SendNoodlesToPrep"/>
+			<method name="SendNoodlesToPrep"/>
+			<method name="SetNoodleCooking"/>
+			<method name="SetNoodleCooking"/>
+			<method name="SetNoodleCooking"/>
+			<method name="SetNoodleCooking"/>
+			<method name="SetNoodleCooking"/>
+			<method name="SetNoodleCooking"/>
+			<method name="SetNoodleCooking"/>
+			<method name="SetNoodleCooking"/>
+		</type>
+		<type fullname="CustomerManager">
+			<method name="AddOrder"/>
+			<method name="FinishOrder"/>
+		</type>
+		<type fullname="Prep">
+			<method name="FinishOrder"/>
+		</type>
+		<type fullname="SceneManager">
+			<method name="LoadScene"/>
+		</type>
+		<type fullname="ScreenManager">
+			<method name="SwitchToCooker"/>
+			<method name="SwitchToFront"/>
+			<method name="SwitchToPrep"/>
+		</type>
+	</assembly>
+	<assembly fullname="Unity.RenderPipelines.Core.Runtime" ignoreIfMissing="1">
+		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerButton">
+			<method name="OnAction"/>
+		</type>
+		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerIntField">
+			<method name="OnDecrement"/>
+			<method name="OnDecrement"/>
+			<method name="OnIncrement"/>
+			<method name="OnIncrement"/>
+		</type>
+		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerObjectPopupField">
+			<method name="OnDecrement"/>
+			<method name="OnIncrement"/>
+		</type>
+		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerPanel">
+			<method name="OnScrollbarClicked"/>
+			<method name="OnScrollbarClicked"/>
+			<method name="ResetDebugManager"/>
+		</type>
+		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerUIntField">
+			<method name="OnDecrement"/>
+			<method name="OnDecrement"/>
+			<method name="OnIncrement"/>
+			<method name="OnIncrement"/>
+		</type>
+	</assembly>
+	<assembly fullname="UnityEngine.CoreModule" ignoreIfMissing="1">
+		<type fullname="UnityEngine.GameObject">
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+		</type>
+	</assembly>
+</linker>
