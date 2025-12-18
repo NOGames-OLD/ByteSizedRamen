@@ -4,8 +4,10 @@ ScriptsOnlyBuild:
     - AudioManager
     - Cooker
     - CustomerManager
+    - DraggableTopping
     - Front
     - NoodleContents
+    - NoodleDropZone
     - Noodles
     - Order
     - OrderZoomIn
@@ -16,7 +18,6 @@ ScriptsOnlyBuild:
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Animation.Runtime.dll:
-    - UnityEngine.U2D.Animation.BufferManager
     - UnityEngine.U2D.Animation.DeformationManager
     - UnityEngine.U2D.Animation.DeformationManagerUpdater
     Unity.2D.IK.Editor.dll:
@@ -124,8 +125,6 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.CommandLineTest.RunData
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
-    UnityEditor.UI.dll:
-    - UnityEditor.UI.ImageEditor
     UnityEngine.UI:
     - UnityEngine.EventSystems.EventTrigger
     - UnityEngine.UI.Button
@@ -275,6 +274,9 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: Cooker
     methodName: SendNoodlesToPrep
+  - assembly: Assembly-CSharp
+    fullTypeName: PrepStation
+    methodName: ToggleTopping
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
@@ -329,9 +331,6 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: PrepStation
     methodName: SelectSauce
-  - assembly: Assembly-CSharp
-    fullTypeName: PrepStation
-    methodName: ToggleTopping
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
@@ -347,9 +346,6 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: Prep
     methodName: FinishOrder
-  - assembly: Assembly-CSharp
-    fullTypeName: PrepStation
-    methodName: ToggleTopping
   - assembly: Assembly-CSharp
     fullTypeName: Cooker
     methodName: SendNoodlesToPrep
@@ -418,7 +414,7 @@ ScriptsOnlyBuild:
     methodName: SetActive
   - assembly: Assembly-CSharp
     fullTypeName: PrepStation
-    methodName: ToggleTopping
+    methodName: SelectSauce
   - assembly: Assembly-CSharp
     fullTypeName: CustomerManager
     methodName: FinishOrder
@@ -510,143 +506,147 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 18040}
+      Script: {instanceID: 31626}
     - Class: 114
-      Script: {instanceID: 18042}
+      Script: {instanceID: 31808}
     - Class: 114
-      Script: {instanceID: 18044}
+      Script: {instanceID: 32086}
     - Class: 114
-      Script: {instanceID: 18046}
+      Script: {instanceID: 32134}
     - Class: 114
-      Script: {instanceID: 31628}
+      Script: {instanceID: 32344}
     - Class: 114
-      Script: {instanceID: 31810}
+      Script: {instanceID: 32362}
     - Class: 114
-      Script: {instanceID: 32088}
+      Script: {instanceID: 32504}
     - Class: 114
-      Script: {instanceID: 32136}
+      Script: {instanceID: 32542}
     - Class: 114
-      Script: {instanceID: 32346}
+      Script: {instanceID: 32632}
     - Class: 114
-      Script: {instanceID: 32364}
+      Script: {instanceID: 32844}
     - Class: 114
-      Script: {instanceID: 32506}
+      Script: {instanceID: 32986}
     - Class: 114
-      Script: {instanceID: 32544}
+      Script: {instanceID: 33258}
     - Class: 114
-      Script: {instanceID: 32634}
+      Script: {instanceID: 33482}
     - Class: 114
-      Script: {instanceID: 32846}
+      Script: {instanceID: 33854}
     - Class: 114
-      Script: {instanceID: 32988}
+      Script: {instanceID: 33918}
     - Class: 114
-      Script: {instanceID: 33260}
+      Script: {instanceID: 34086}
     - Class: 114
-      Script: {instanceID: 33484}
+      Script: {instanceID: 34322}
     - Class: 114
-      Script: {instanceID: 33856}
+      Script: {instanceID: 34420}
     - Class: 114
-      Script: {instanceID: 33920}
+      Script: {instanceID: 34458}
     - Class: 114
-      Script: {instanceID: 34088}
+      Script: {instanceID: 34516}
     - Class: 114
-      Script: {instanceID: 34324}
+      Script: {instanceID: 34546}
     - Class: 114
-      Script: {instanceID: 34422}
+      Script: {instanceID: 34582}
     - Class: 114
-      Script: {instanceID: 34460}
+      Script: {instanceID: 35520}
     - Class: 114
-      Script: {instanceID: 34518}
+      Script: {instanceID: 35588}
     - Class: 114
-      Script: {instanceID: 34548}
+      Script: {instanceID: 35846}
     - Class: 114
-      Script: {instanceID: 34584}
+      Script: {instanceID: 35856}
     - Class: 114
-      Script: {instanceID: 35522}
+      Script: {instanceID: 36624}
     - Class: 114
-      Script: {instanceID: 35590}
+      Script: {instanceID: 36678}
     - Class: 114
-      Script: {instanceID: 35848}
+      Script: {instanceID: 36968}
     - Class: 114
-      Script: {instanceID: 35858}
+      Script: {instanceID: 37066}
     - Class: 114
-      Script: {instanceID: 36626}
+      Script: {instanceID: 37134}
     - Class: 114
-      Script: {instanceID: 36680}
+      Script: {instanceID: 37216}
     - Class: 114
-      Script: {instanceID: 36970}
+      Script: {instanceID: 37314}
     - Class: 114
-      Script: {instanceID: 37068}
+      Script: {instanceID: 37430}
     - Class: 114
-      Script: {instanceID: 37136}
+      Script: {instanceID: 38002}
     - Class: 114
-      Script: {instanceID: 37218}
+      Script: {instanceID: 38090}
     - Class: 114
-      Script: {instanceID: 37316}
+      Script: {instanceID: 38306}
     - Class: 114
-      Script: {instanceID: 37432}
-    - Class: 114
-      Script: {instanceID: 38004}
-    - Class: 114
-      Script: {instanceID: 38092}
-    - Class: 114
-      Script: {instanceID: 38308}
+      Script: {instanceID: 38410}
     - Class: 114
       Script: {instanceID: 38412}
     - Class: 114
-      Script: {instanceID: 38414}
+      Script: {instanceID: 38678}
     - Class: 114
-      Script: {instanceID: 38680}
+      Script: {instanceID: 38920}
     - Class: 114
       Script: {instanceID: 39476}
     - Class: 114
-      Script: {instanceID: 40114}
+      Script: {instanceID: 39982}
     - Class: 114
-      Script: {instanceID: 41176}
+      Script: {instanceID: 40116}
     - Class: 114
-      Script: {instanceID: 41624}
+      Script: {instanceID: 40508}
     - Class: 114
-      Script: {instanceID: 41680}
+      Script: {instanceID: 41056}
     - Class: 114
-      Script: {instanceID: 41716}
+      Script: {instanceID: 41114}
     - Class: 114
-      Script: {instanceID: 41978}
+      Script: {instanceID: 41184}
     - Class: 114
-      Script: {instanceID: 42060}
+      Script: {instanceID: 41632}
     - Class: 114
-      Script: {instanceID: 42158}
+      Script: {instanceID: 41688}
     - Class: 114
-      Script: {instanceID: 42614}
+      Script: {instanceID: 41724}
     - Class: 114
-      Script: {instanceID: 42728}
+      Script: {instanceID: 41986}
     - Class: 114
-      Script: {instanceID: 42730}
+      Script: {instanceID: 42068}
     - Class: 114
-      Script: {instanceID: 42792}
+      Script: {instanceID: 42166}
     - Class: 114
-      Script: {instanceID: 42814}
+      Script: {instanceID: 42622}
     - Class: 114
-      Script: {instanceID: 42836}
+      Script: {instanceID: 42736}
     - Class: 114
-      Script: {instanceID: 42978}
+      Script: {instanceID: 42738}
     - Class: 114
-      Script: {instanceID: 43068}
+      Script: {instanceID: 42800}
     - Class: 114
-      Script: {instanceID: 43098}
+      Script: {instanceID: 42822}
     - Class: 114
-      Script: {instanceID: 43272}
+      Script: {instanceID: 42844}
     - Class: 114
-      Script: {instanceID: 43552}
+      Script: {instanceID: 42986}
     - Class: 114
-      Script: {instanceID: 43640}
+      Script: {instanceID: 43076}
     - Class: 114
-      Script: {instanceID: 43726}
+      Script: {instanceID: 43106}
     - Class: 114
-      Script: {instanceID: 43884}
+      Script: {instanceID: 43280}
     - Class: 114
-      Script: {instanceID: 44062}
+      Script: {instanceID: 43512}
     - Class: 114
-      Script: {instanceID: 60402}
+      Script: {instanceID: 43562}
+    - Class: 114
+      Script: {instanceID: 43650}
+    - Class: 114
+      Script: {instanceID: 43736}
+    - Class: 114
+      Script: {instanceID: 43894}
+    - Class: 114
+      Script: {instanceID: 44072}
+    - Class: 114
+      Script: {instanceID: 44512}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -672,30 +672,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.RenderPipelines.Universal.Runtime
     namespaceName: UnityEngine.Rendering.Universal
     className: UniversalRenderPipelineAsset
-  - hash:
-      serializedVersion: 2
-      Hash: ce16adb74679a23b75a6b4ad81d0b1be
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: ScreenManager
-  - hash:
-      serializedVersion: 2
-      Hash: 5eb8ee51dc2adf6aba24914e6450be72
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Order
-  - hash:
-      serializedVersion: 2
-      Hash: b0911f7fb2c31ee949e0de8e513c49a5
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Cooker
-  - hash:
-      serializedVersion: 2
-      Hash: d8fb4dbe294bc8bb2d331515d294ca5f
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: CustomerManager
   - hash:
       serializedVersion: 2
       Hash: 95c8a8c68e664d4868755f06e7c55997
@@ -1346,7 +1322,7 @@ ScriptsOnlyBuild:
     className: UnityOnBecameVisibleMessageListener
   - hash:
       serializedVersion: 2
-      Hash: c1cdfb3e950121ea34a9df8ea429b32c
+      Hash: c32e5686b703a720c8cfc45277ba6db0
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: PrepStation
@@ -1730,6 +1706,12 @@ ScriptsOnlyBuild:
     className: PlayerInputEditor
   - hash:
       serializedVersion: 2
+      Hash: 61cd21afa599a362c2c71b83a2fc7b83
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: NoodleContents
+  - hash:
+      serializedVersion: 2
       Hash: 568292fb7ea6c4f7a667e5ff76bc7e85
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -1850,6 +1832,12 @@ ScriptsOnlyBuild:
     className: VolumeProfile
   - hash:
       serializedVersion: 2
+      Hash: 3f9d15c3eadb0ae6285303f11894c52d
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: NoodleDropZone
+  - hash:
+      serializedVersion: 2
       Hash: 467f4a5e5f0a57c9f502e4d66c72baf5
     assemblyName: Unity.2D.Animation.Runtime
     namespaceName: UnityEngine.U2D.Animation
@@ -1916,6 +1904,12 @@ ScriptsOnlyBuild:
     className: InputActionsEditorWindow
   - hash:
       serializedVersion: 2
+      Hash: b0911f7fb2c31ee949e0de8e513c49a5
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Cooker
+  - hash:
+      serializedVersion: 2
       Hash: 64756cee21909a7a459d5e05844baa97
     assemblyName: Unity.RenderPipelines.Universal.2D.Runtime
     namespaceName: UnityEngine.Rendering.Universal
@@ -1964,6 +1958,12 @@ ScriptsOnlyBuild:
     className: RuleOverrideTile
   - hash:
       serializedVersion: 2
+      Hash: 82bcd82c07116c514bb57968310608c4
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: DraggableTopping
+  - hash:
+      serializedVersion: 2
       Hash: b810dfd26c061161a980f9a956f9a116
     assemblyName: Unity.RenderPipelines.Universal.Runtime
     namespaceName: UnityEngine.Rendering.Universal
@@ -1974,6 +1974,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.RenderPipelines.Universal.Runtime
     namespaceName: UnityEngine.Rendering.Universal
     className: ShadowsMidtonesHighlights
+  - hash:
+      serializedVersion: 2
+      Hash: 5eb8ee51dc2adf6aba24914e6450be72
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Order
   - hash:
       serializedVersion: 2
       Hash: 049f6aa84fe1cb5359c9338e96d0b07e
@@ -2306,6 +2312,12 @@ ScriptsOnlyBuild:
     className: SplitToning
   - hash:
       serializedVersion: 2
+      Hash: d8fb4dbe294bc8bb2d331515d294ca5f
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: CustomerManager
+  - hash:
+      serializedVersion: 2
       Hash: b747f5d40674055dd70e18552f1b0447
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -2390,6 +2402,12 @@ ScriptsOnlyBuild:
     className: Renderer2DData
   - hash:
       serializedVersion: 2
+      Hash: ce16adb74679a23b75a6b4ad81d0b1be
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ScreenManager
+  - hash:
+      serializedVersion: 2
       Hash: d82086405f46de14829f6b4bcbdd8fc9
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -2406,13 +2424,7 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 61cd21afa599a362c2c71b83a2fc7b83
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: NoodleContents
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/Nathan/Documents/FoodTruckV4/Food Truck Group Project.exe
+  playerPath: C:/Users/Nathan/Documents/FoodTruckV6/Food Truck Group Project.exe

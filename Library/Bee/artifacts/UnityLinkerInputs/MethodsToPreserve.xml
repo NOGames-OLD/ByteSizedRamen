@@ -29,8 +29,7 @@
 			<method name="SelectSauce"/>
 			<method name="SelectSauce"/>
 			<method name="SelectSauce"/>
-			<method name="ToggleTopping"/>
-			<method name="ToggleTopping"/>
+			<method name="SelectSauce"/>
 			<method name="ToggleTopping"/>
 		</type>
 		<type fullname="SceneManager">

@@ -25,7 +25,7 @@ public class NoodleDropZone : MonoBehaviour, IDropHandler
         if (topping == null || prepStation == null)
             return;
 
-        prepStation.ToggleTopping((int)topping.toppingType);
+        //prepStation.ToggleTopping((int)topping.toppingType);
         topping.droppedSuccessfully = true;
     }
 }

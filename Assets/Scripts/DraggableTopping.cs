@@ -12,6 +12,8 @@ public class DraggableTopping : MonoBehaviour,
     private Canvas canvas;
     private Vector2 startPos;
     private CanvasGroup canvasGroup;
+    public PrepStation prepStation;
+    public int toppingIndex;
 
     public bool droppedSuccessfully;
 
@@ -58,6 +60,7 @@ public class DraggableTopping : MonoBehaviour,
 
         if (droppedSuccessfully)
         {
+            prepStation.ToggleTopping(toppingIndex);
             // Ingredient consumed
             gameObject.SetActive(false);
         }
