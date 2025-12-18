@@ -2,9 +2,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.UIElements;
+using System.Collections.Generic;
 
 public class Order : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    //New for adding toppings 
+    public SauceType requestedSauce = SauceType.None;
+    public ToppingFlags requestedToppings = ToppingFlags.None;
 
     public int orderID;
     private bool mouse_over = false;
@@ -65,9 +69,35 @@ public class Order : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
         orderID = id;
     }
     
-    public void SetOrderText(string text)
+    
+    public void SetOrderText(string baseText)
+{
+    // Base 
+    string newText = "Order #" + orderID.ToString() + "\n" + baseText;
+
+    // If we have sauce/toppings
+    string details = "";
+
+    if (requestedSauce != SauceType.None)
     {
-        string newText = "Order #" + orderID.ToString() + "\n" + text;
-        OrderText.text = newText;
+        details += "\nSauce: " + requestedSauce.ToString();
     }
+
+    if (requestedToppings != ToppingFlags.None)
+    {
+        details += "\nToppings:";
+
+        foreach (ToppingFlags flag in System.Enum.GetValues(typeof(ToppingFlags)))
+        {
+            if (flag == ToppingFlags.None) continue;
+            if ((requestedToppings & flag) == flag)
+            {
+                details += " " + flag.ToString();
+            }
+        }
+    }
+
+    OrderText.text = newText + details;
+}
+
 }

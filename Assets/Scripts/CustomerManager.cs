@@ -70,7 +70,7 @@ public class CustomerManager : MonoBehaviour
         orders.Add(newOrder);
         orderNumber++;
         newOrder.SetID(orderNumber);
-        newOrder.SetOrderText("Noodles");
+        SetupRandomRecipeForOrder(newOrder); //replaced to handle toppings
         newOrder.OrderZoomIn = OrderZoomIn;
         newOrder.customerManager = this;
         customer.SetActive(false);
@@ -116,7 +116,111 @@ public class CustomerManager : MonoBehaviour
             {
                 currentTimeBetweenCustomers = UnityEngine.Random.Range(timeBetweenCustomersRange.x, timeBetweenCustomersRange.y);
             }
+
+            // new bonus based on ingredients 
+            NoodleContents contents = null;
+            if (front.currentNoodles != null)
+            {
+                contents = front.currentNoodles.GetComponent<NoodleContents>();
+            }
+
+            if (contents != null)
+            {
+                float ingredientBonus = CalculateIngredientBonus(selectedOrder, contents);
+                money += ingredientBonus;
+                moneyText.text = "$" + money.ToString();
+            }
             
         }
     }
+
+//New for generating random recipoe 
+private void SetupRandomRecipeForOrder(Order order)
+{
+    // Random sauce 
+    SauceType[] sauces = { SauceType.Soy, SauceType.Spice };
+    int sauceIndex = UnityEngine.Random.Range(0, sauces.Length);
+    order.requestedSauce = sauces[sauceIndex];
+
+    // Random toppings 
+    ToppingFlags[] toppingChoices =
+    {
+        ToppingFlags.Egg,
+        ToppingFlags.Shrimp,
+        ToppingFlags.Seaweed,
+    };
+
+    order.requestedToppings = ToppingFlags.None;
+
+    int toppingCount = UnityEngine.Random.Range(1, 4); // 1 to 3 toppings
+    for (int i = 0; i < toppingCount; i++)
+    {
+        int tIndex = UnityEngine.Random.Range(0, toppingChoices.Length);
+        order.requestedToppings |= toppingChoices[tIndex];
+    }
+
+    
+    order.SetOrderText("Noodles");
+}
+
+
+// New for comparing recipe against order and giving bonus 
+private float CalculateIngredientBonus(Order order, NoodleContents contents)
+{
+    if (order == null || contents == null)
+        return 0f;
+
+    float bonus = 0f;
+
+    // Sauce check
+    if (order.requestedSauce == contents.sauce)
+    {
+        bonus += 0.5f;
+    }
+
+    // Toppings: count matching and missing/extra
+    int totalRequested = 0;
+    int correctMatches = 0;
+    int wrongExtras = 0;
+
+    foreach (ToppingFlags flag in System.Enum.GetValues(typeof(ToppingFlags)))
+    {
+        if (flag == ToppingFlags.None) continue;
+
+        bool requested = (order.requestedToppings & flag) == flag;
+        bool present   = (contents.toppings      & flag) == flag;
+
+        if (requested) totalRequested++;
+
+        if (requested && present)
+        {
+            correctMatches++;
+        }
+        else if (!requested && present)
+        {
+            wrongExtras++;
+        }
+    }
+
+    if (totalRequested > 0)
+    {
+        float matchRatio = (float)correctMatches / totalRequested;
+
+        // Full match → +1.0, partial → scaled
+        bonus += matchRatio * 1.0f;
+    }
+
+    // penalty for too many random extras
+    if (wrongExtras > 0)
+    {
+        bonus -= 0.25f * wrongExtras;
+    }
+
+    // clamp to stop it going crazy 
+    bonus = Mathf.Clamp(bonus, -0.5f, 1.5f);
+
+    return bonus;
+}
+
+
 }
