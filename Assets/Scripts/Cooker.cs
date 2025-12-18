@@ -1,5 +1,6 @@
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cooker : MonoBehaviour
 {
@@ -8,7 +9,12 @@ public class Cooker : MonoBehaviour
     public GameObject noodlesPrefab;
     Noodles myNoodles;
     public Prep prep;
-    public GameObject[] buttonsToSetInactive;
+    public GameObject offButton;
+    public GameObject onButton;
+    public GameObject prepButton;
+    public GameObject wok;
+    public GameObject addNoodlesButton;
+    bool isNowCooking;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,6 +39,7 @@ public class Cooker : MonoBehaviour
         if (myNoodles != null)
         {
             myNoodles.SetCooking(isCooking);
+            isNowCooking = isCooking;
             if(myNoodles.isCooking==true)
             {
                 FindObjectOfType<AudioManager>().Play("StoveNoise");
@@ -51,16 +58,42 @@ public class Cooker : MonoBehaviour
         if (prep.currentNoodles == null)
         {
             myNoodles.isCooking = false;
+            isNowCooking = false;
             prep.AddNoodles(myNoodles);
             myNoodles = null;
+            //SetImages(true);
             screenManager.SwitchToPrep();
             FindObjectOfType<AudioManager>().Stop("StoveNoise");
             FindObjectOfType<AudioManager>().Stop("BoilingWater");
-            for (int i = 0; i < buttonsToSetInactive.Length - 1; i++)
+        }
+    }
+
+    public void SetImages(bool state)
+    {
+        if(myNoodles != null){
+            myNoodles.GetComponent<Image>().enabled = state;
+            if (isNowCooking)
             {
-                buttonsToSetInactive[i].SetActive(false);
+                offButton.SetActive(state);
             }
-            buttonsToSetInactive[buttonsToSetInactive.Length - 1].SetActive(true);
+            else
+            {
+                onButton.SetActive(state);
+            }
+            wok.SetActive(state);
+            prepButton.SetActive(state);
+        }
+        else
+        {   
+            addNoodlesButton.SetActive(state);
+            if(state == false)
+            {
+                Debug.Log("Hello");
+                offButton.SetActive(state);
+                onButton.SetActive(state);
+                prepButton.SetActive(state);
+                wok.SetActive(false);
+            }
         }
     }
 }

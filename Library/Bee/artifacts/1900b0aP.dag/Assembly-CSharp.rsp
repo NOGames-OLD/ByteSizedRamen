@@ -348,15 +348,20 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.32f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.32f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.32f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
+"Assets/AudioManager.cs"
 "Assets/SceneManager.cs"
 "Assets/Scripts/Cooker.cs"
 "Assets/Scripts/CustomerManager.cs"
 "Assets/Scripts/Front.cs"
+"Assets/Scripts/NoodleContents.cs"
+"Assets/Scripts/NoodleEnums.cs"
 "Assets/Scripts/Noodles.cs"
 "Assets/Scripts/Order.cs"
 "Assets/Scripts/OrderZoomIn.cs"
 "Assets/Scripts/Prep.cs"
+"Assets/Scripts/PrepStation.cs"
 "Assets/Scripts/ScreenManager.cs"
+"Assets/Sound.cs"
 -langversion:9.0
 /deterministic
 /optimize+

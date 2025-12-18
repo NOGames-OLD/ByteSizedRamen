@@ -73,14 +73,14 @@ public class Order : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
     public void SetOrderText(string baseText)
 {
     // Base 
-    string newText = "Order #" + orderID.ToString() + "\n" + baseText;
+    string newText = "#" + orderID.ToString() + "" + baseText;
 
     // If we have sauce/toppings
     string details = "";
 
     if (requestedSauce != SauceType.None)
     {
-        details += "\nSauce: " + requestedSauce.ToString();
+        details += "\nSauce: " + "\n" + requestedSauce.ToString();
     }
 
     if (requestedToppings != ToppingFlags.None)
@@ -92,7 +92,7 @@ public class Order : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
             if (flag == ToppingFlags.None) continue;
             if ((requestedToppings & flag) == flag)
             {
-                details += " " + flag.ToString();
+                details += "\n" + flag.ToString();
             }
         }
     }

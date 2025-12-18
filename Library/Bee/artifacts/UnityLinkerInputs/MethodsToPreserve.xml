@@ -25,6 +25,14 @@
 		<type fullname="Prep">
 			<method name="FinishOrder"/>
 		</type>
+		<type fullname="PrepStation">
+			<method name="SelectSauce"/>
+			<method name="SelectSauce"/>
+			<method name="SelectSauce"/>
+			<method name="ToggleTopping"/>
+			<method name="ToggleTopping"/>
+			<method name="ToggleTopping"/>
+		</type>
 		<type fullname="SceneManager">
 			<method name="LoadScene"/>
 		</type>
@@ -62,6 +70,10 @@
 	</assembly>
 	<assembly fullname="UnityEngine.CoreModule" ignoreIfMissing="1">
 		<type fullname="UnityEngine.GameObject">
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
 			<method name="SetActive"/>
 			<method name="SetActive"/>
 			<method name="SetActive"/>

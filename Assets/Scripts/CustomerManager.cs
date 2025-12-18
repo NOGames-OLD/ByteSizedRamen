@@ -160,7 +160,7 @@ private void SetupRandomRecipeForOrder(Order order)
     }
 
     
-    order.SetOrderText("Noodles");
+    order.SetOrderText("");
 }
 
 

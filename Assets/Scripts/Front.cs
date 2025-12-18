@@ -5,6 +5,7 @@ public class Front : MonoBehaviour
 
     public Noodles currentNoodles;
     public Transform NoodleLocation;
+    public GameObject closedNoodleBox;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,13 +21,14 @@ public class Front : MonoBehaviour
 
     public void SendNoodleToFront(Noodles newNoodle)
     {
-        newNoodle.transform.SetParent(NoodleLocation);
-        newNoodle.transform.position = NoodleLocation.transform.position;
+        closedNoodleBox.SetActive(true);
+        newNoodle.gameObject.SetActive(false);
         currentNoodles = newNoodle;
     }
 
     public void SendNoodles()
     {
+        closedNoodleBox.SetActive(false);
         Destroy(currentNoodles.gameObject);
     }
 }

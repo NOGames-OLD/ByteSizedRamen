@@ -5,7 +5,8 @@ public class ScreenManager : MonoBehaviour
 
 
     public GameObject frontScreen;
-    public GameObject cookerScreen;
+    public GameObject cookTop;
+    public Cooker[] cookers;
     public GameObject prepScreen;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,7 +23,11 @@ public class ScreenManager : MonoBehaviour
 
     public void SwitchToFront()
     {
-        cookerScreen.SetActive(false);
+        cookTop.SetActive(false);
+        for (int i = 0; i < cookers.Length; i++)
+        {
+            cookers[i].SetImages(false);
+        }
         prepScreen.SetActive(false);
         frontScreen.SetActive(true);
         FindObjectOfType<AudioManager>().Play("ScreenChange");
@@ -30,7 +35,11 @@ public class ScreenManager : MonoBehaviour
 
     public void SwitchToCooker()
     {
-        cookerScreen.SetActive(true);
+        cookTop.SetActive(true);
+        for (int i = 0; i < cookers.Length; i++)
+        {
+            cookers[i].SetImages(true);
+        }
         prepScreen.SetActive(false);
         frontScreen.SetActive(false);
         FindObjectOfType<AudioManager>().Play("ScreenChange");
@@ -38,7 +47,11 @@ public class ScreenManager : MonoBehaviour
     
     public void SwitchToPrep()
     {
-        cookerScreen.SetActive(false);
+        cookTop.SetActive(false);
+        for (int i = 0; i < cookers.Length; i++)
+        {
+            cookers[i].SetImages(false);
+        }
         prepScreen.SetActive(true);
         frontScreen.SetActive(false);
         FindObjectOfType<AudioManager>().Play("ScreenChange");
